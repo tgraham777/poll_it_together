@@ -1,30 +1,24 @@
-# react-playground
+# Poll It Together
 
-Webpack + React.js + Babel 6 + Mocha + Enzyme
+A real-time polling application built with node.js, socket.io, Redis, and Express
 
-## 0. Up and Running 
+Initial dependencies and webpack setup cloned from [applegrain](https://github.com/applegrain/react-playground)
 
-Clone the repo: 
+## 0. Up and Running
+
+Clone the repo:
 
 ```
 $ git clone git@github.com:applegrain/react-playground.git
 ```
 
-Install the dependencies: 
+Install the dependencies:
 
 ```
 $ npm install
 ```
 
-Run the tests: 
-
-```
-$ npm test 
-|| 
-$ npm run test:watch
-```
-
-Start the dev server: 
+Start the dev server:
 
 ```
 $ npm run dev
