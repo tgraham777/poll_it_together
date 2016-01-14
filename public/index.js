@@ -1,8 +1,8 @@
 $('.add-new-button').on('click', function() {
-  appendQuestionField();
+  appendQuestion();
 });
 
-function appendQuestionField() {
+function appendQuestion() {
   var questionNumber = $('.question').length + 1;
   var newQuestion = 'Question '
                     + questionNumber + ':<br><input class="question" data-id="'
