@@ -29,8 +29,9 @@ app.get('/', function(request, response) {
 
 app.post('/', function(request, response) {
   var poll = new Poll(request.body);
+  console.log(poll);
   pollData[poll.admin_id] = poll;
-  response.redirect('/' + poll.admin_url);
+  // response.redirect('/' + poll.admin_url);
 });
 
 io.on('connection', function (socket) {

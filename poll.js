@@ -1,7 +1,7 @@
 const crypto = require('crypto');
 
 function Poll(pollData) {
-  this.name = pollData.name;
+  this.name = pollData.pollName;
   this.id = this.generateId(12);
   this.admin_id = this.generateId(12);
   this.admin_url = 'admin/' + this.admin_id;
