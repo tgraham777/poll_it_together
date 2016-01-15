@@ -1,0 +1,38 @@
+<h1>Poll It Together</h1><hr>
+<h2>Generate a new poll:</h2>
+
+<form role="form" action="/" method="post" id="poll-form">
+  Poll name: <input type="text" name="poll-name" class="poll-name" placeholder="Enter a name"><br>
+  Poll description:<br>
+  <textarea rows="4" cols="50" name="poll-description" class="poll-description" form="poll-form" placeholder="Enter description here..."></textarea><br><br>
+
+  <button type="button" class="add-new-button" name="add-new-button">Add new question</button><br><br>
+
+  <div class="question-list">
+    Question 1:<br>
+    <input data-id="1" type="text" name="question-1" class="question" id="question-1" placeholder="Enter a question"><br><br>
+  </div>
+
+  Select time to auto-close:
+  <select name="auto-close-time" id="auto-close-list" form="poll-form">
+    <option name="auto-close-time" value="manual">Manual</option>
+    <option name="auto-close-time" value="5">5 mins</option>
+    <option name="auto-close-time" value="10">10 mins</option>
+    <option name="auto-close-time" value="15">15 mins</option>
+    <option name="auto-close-time" value="30">30 mins</option>
+    <option name="auto-close-time" value="60">1 hour</option>
+    <option name="auto-close-time" value="120">2 hours</option>
+    <option name="auto-close-time" value="720">12 hours</option>
+    <option name="auto-close-time" value="1440">24 hours</option>
+  </select><br><br>
+
+  Show results on poll page?<br>
+  <div class="show-results">
+    <input type="radio" name="show-poll-results" value="Yes">Yes<br>
+    <input type="radio" name="show-poll-results" value="No">No<br>
+  </div>
+
+  <input class="poll-submit" type="submit" value="Submit">
+</form>
+
+<script src="index.js"></script>
