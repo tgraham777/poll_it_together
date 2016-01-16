@@ -4,6 +4,9 @@ const app = express();
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
 const Poll = require('./poll');
+const PollCreator = require('./pollCreator');
+
+var pollCreator = new PollCreator;
 
 var hbars = require('express-handlebars');
 var bodyParser = require('body-parser');
@@ -18,20 +21,21 @@ app.set('view engine', 'handlebars');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
 app.use(express.static(path.join(__dirname, 'public')));
-
-var pollData = {};
 
 app.get('/', function(request, response) {
   response.render('index');
 });
 
 app.post('/', function(request, response) {
-  var poll = new Poll(request.body);
-  console.log(poll);
-  pollData[poll.admin_id] = poll;
-  // response.redirect('/' + poll.admin_url);
+  var poll = pollCreator.create(request.body);
+  response.redirect('/' + poll.dashboard_url);
+});
+
+app.get('/dashboard/:id', function(request, response) {
+  response.render('dashboard', {
+    poll: pollCreator.poll
+  });
 });
 
 io.on('connection', function (socket) {

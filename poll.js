@@ -4,7 +4,7 @@ function Poll(pollData) {
   this.name = pollData.pollName;
   this.id = this.generateId(12);
   this.admin_id = this.generateId(12);
-  this.admin_url = 'admin/' + this.admin_id;
+  this.dashboard_url = 'dashboard/' + this.admin_id;
   this.poll_id = this.generateId(12);
   this.poll_url = 'poll/' + this.poll_id;
   this.questions = pollData.questions;
