@@ -6,7 +6,7 @@ function PollCreator() {
 
 PollCreator.prototype.create = function(pollData) {
   var poll = new Poll(pollData);
-  this.poll[poll.admin_id] = poll;
+  this.poll = poll;
   return poll;
 }
 

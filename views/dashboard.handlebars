@@ -3,13 +3,13 @@
 <p>Send the first link below to your desired pollees. Use the second link to access the poll admin view.</p>
 
 <ul>
-  <li> Poll Link: <a id="poll-url">{{ poll_url }}</a></li>
-  <li> Admin View (current page???): <a id="admin-url">{{ dashboard_url }}</a></li>
+  <li> Poll Link: <a id="poll-url">{{poll.poll_url }}</a></li>
+  <li> Admin View (current page???): <a id="admin-url">{{poll.dashboard_url }}</a></li>
 </ul>
 
-<h2 id="poll-name">{{ pollName }}</h2>
+<h2 id="poll-name">{{poll.pollName }}</h2>
 
-{{#each questions}}
+{{#each poll.questions}}
 <div class=""> {{@key}}
   <br>
   <button class="poll-question" type="button" name="button">{{this}}</button>

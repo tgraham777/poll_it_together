@@ -1,6 +1,6 @@
 $(document).ready(function(){
   var pollUrl = $('#poll-url');
-  var pollFullUrl = $(location).attr('origin') + "/" + pollUrl.text();
+  var pollFullUrl = window.location.origin + "/" + pollUrl.text();
   pollUrl.text(pollFullUrl);
   pollUrl.attr('href', pollFullUrl);
 

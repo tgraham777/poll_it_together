@@ -33,6 +33,7 @@ app.post('/', function(request, response) {
 });
 
 app.get('/dashboard/:id', function(request, response) {
+  console.log(pollCreator.poll);
   response.render('dashboard', {
     poll: pollCreator.poll
   });
