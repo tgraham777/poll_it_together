@@ -29,12 +29,43 @@ app.get('/', function(request, response) {
 
 app.post('/', function(request, response) {
   var poll = pollCreator.create(request.body);
-  response.redirect('/' + poll.dashboard_url);
+
+  if(request.body.showPollResults === "No") {
+    response.redirect('/' + poll.links_url);
+  } else if(request.body.showPollResults === "Yes") {
+    response.redirect('/' + poll.show_links_url);
+  } else {
+    console.log("You must select whether to show results on poll page or not");
+  }
 });
 
-app.get('/dashboard/:id', function(request, response) {
+app.get('/links/:id', function(request, response) {
   console.log(pollCreator.poll);
-  response.render('dashboard', {
+  response.render('links', {
+    poll: pollCreator.poll
+  });
+});
+
+app.get('/showLinks/:id', function(request, response) {
+  response.render('showLinks', {
+    poll: pollCreator.poll
+  });
+});
+
+app.get('/poll/:id', function(request, response) {
+  response.render('pollView', {
+    poll: pollCreator.poll
+  });
+});
+
+app.get('/showPoll/:id', function(request, response) {
+  response.render('showPollView', {
+    poll: pollCreator.poll
+  });
+});
+
+app.get('/admin/:id', function(request, response) {
+  response.render('admin', {
     poll: pollCreator.poll
   });
 });

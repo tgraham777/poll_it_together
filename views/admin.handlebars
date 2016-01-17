@@ -1,0 +1,16 @@
+<h1 id="admin-view-name">Admin Dashboard - "{{poll.name }}"</h1>
+
+<hr>
+<h3>Time remaining:</h3>
+<h3>Real-time results:</h3>
+<hr>
+
+<h3>Description:</h3>
+<p id="poll-view-description">{{poll.description }}</p>
+
+<h3>Questions:</h3>
+{{#each poll.questions}}
+  <p>{{this}}&nbsp&nbsp<button class="pollVote" type="button" name="pollVote">Vote</button></p>
+{{/each}}
+
+<script type="text/javascript" src="/admin.js"></script>

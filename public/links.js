@@ -4,8 +4,8 @@ $(document).ready(function(){
   pollUrl.text(pollFullUrl);
   pollUrl.attr('href', pollFullUrl);
 
-  // var adminUrl = $('#admin-url');
-  // var adminFullUrl = $(location).attr('href');
-  // adminUrl.text(adminFullUrl);
-  // adminUrl.attr('href', adminUrl.text());
+  var adminUrl = $('#admin-url');
+  var adminFullUrl = window.location.origin + "/" + adminUrl.text();
+  adminUrl.text(adminFullUrl);
+  adminUrl.attr('href', adminFullUrl);
 })

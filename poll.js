@@ -2,11 +2,13 @@ const crypto = require('crypto');
 
 function Poll(pollData) {
   this.name = pollData.pollName;
+  this.description = pollData.pollDescription;
   this.id = this.generateId(12);
-  this.admin_id = this.generateId(12);
-  this.dashboard_url = 'dashboard/' + this.admin_id;
-  this.poll_id = this.generateId(12);
-  this.poll_url = 'poll/' + this.poll_id;
+  this.links_url = 'links/' + this.generateId(12);
+  this.show_links_url = 'showLinks/' + this.generateId(12);
+  this.poll_url = 'poll/' + this.generateId(12);
+  this.show_poll_url = 'showPoll/' + this.generateId(12);
+  this.admin_url = 'admin/' + this.generateId(12);
   this.questions = pollData.questions;
   this.responses = {};
   this.respondants = {};
