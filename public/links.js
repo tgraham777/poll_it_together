@@ -7,5 +7,5 @@ $(document).ready(function(){
   var adminUrl = $('#admin-url');
   var adminFullUrl = window.location.origin + "/" + adminUrl.text();
   adminUrl.text(adminFullUrl);
-  adminUrl.attr('href', pollFullUrl);
+  adminUrl.attr('href', adminFullUrl);
 })
