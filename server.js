@@ -64,6 +64,12 @@ app.get('/showPoll/:id', function(request, response) {
   });
 });
 
+app.get('/admin/:id', function(request, response) {
+  response.render('admin', {
+    poll: pollCreator.poll
+  });
+});
+
 io.on('connection', function (socket) {
   console.log('Someone has connected.');
 });
