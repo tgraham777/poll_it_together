@@ -19,6 +19,7 @@
   "homepage": "https://github.com/tgraham777/poll_it_together",
   "dependencies": {
     "body-parser": "^1.14.2",
+    "connect-flash": "^0.1.1",
     "crypto": "0.0.3",
     "express": "^4.13.3",
     "express-handlebars": "^2.0.1",
