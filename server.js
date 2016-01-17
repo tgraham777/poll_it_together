@@ -43,10 +43,10 @@ app.post('/', function(request, response) {
   var poll = pollCreator.create(request.body);
   var errors = request.validationErrors();
 
-  console.log(errors);
-
   if(errors) {
-    request.flash('error', errors[0]['msg']);
+    for (i = 0; i < errors.length; i++) {
+      request.flash('error', " " + errors[i]['msg']);
+    }
     response.redirect('/');
   } else if(request.body.showPollResults === "No") {
     response.redirect('/' + poll.links_url);
@@ -56,7 +56,6 @@ app.post('/', function(request, response) {
 });
 
 app.get('/links/:id', function(request, response) {
-  console.log(pollCreator.poll);
   response.render('links', {
     poll: pollCreator.poll
   });
