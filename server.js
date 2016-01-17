@@ -22,6 +22,9 @@ app.set('view engine', 'handlebars');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
+// app.use(cookieParser('secretString'));
+// app.use(session({cookie: { maxAge: 60000 }}));
+// app.use(flash());
 
 app.get('/', function(request, response) {
   response.render('index');
@@ -29,12 +32,25 @@ app.get('/', function(request, response) {
 
 app.post('/', function(request, response) {
   var poll = pollCreator.create(request.body);
-  response.redirect('/' + poll.dashboard_url);
+  console.log(request.body);
+  // if(request.body.showPollResults === "No") {
+    response.redirect('/' + poll.links_url);
+  // } else if(request.body.showPollResults === "Yes") {
+  //   response.redirect('/' + poll.show_links_url);
+  // } else {
+  //   request.flash("You must select whether to show results on poll page or not");
+  // }
 });
 
-app.get('/dashboard/:id', function(request, response) {
+app.get('/links/:id', function(request, response) {
   console.log(pollCreator.poll);
-  response.render('dashboard', {
+  response.render('links', {
+    poll: pollCreator.poll
+  });
+});
+
+app.get('/poll/:id', function(request, response) {
+  response.render('pollView', {
     poll: pollCreator.poll
   });
 });
