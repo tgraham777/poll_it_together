@@ -6,9 +6,10 @@ const io = require('socket.io')(server);
 const validator = require('express-validator');
 const Poll = require('./poll');
 const PollCreator = require('./pollCreator');
-
-var hbars = require('express-handlebars');
-var bodyParser = require('body-parser');
+const hbars = require('express-handlebars');
+const bodyParser = require('body-parser');
+const session = require('express-session');
+const flash = require('connect-flash');
 
 var pollCreator = new PollCreator;
 
@@ -21,12 +22,14 @@ app.engine('handlebars', hbars({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
 app.use(bodyParser.json());
+app.use(session({resave: false, saveUninitialized: false, secret: 'keyboard cat'}));
+app.use(flash());
 app.use(validator());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', function(request, response) {
-  response.render('index');
+  response.render('index', { messages: request.flash('error') });
 });
 
 app.post('/', function(request, response) {
@@ -43,8 +46,8 @@ app.post('/', function(request, response) {
   console.log(errors);
 
   if(errors) {
-    response.render('index');
-    // response.render('index', { flash: { type: 'alert-danger', messages: errors }});
+    request.flash('error', errors[0]['msg']);
+    response.redirect('/');
   } else if(request.body.showPollResults === "No") {
     response.redirect('/' + poll.links_url);
   } else if(request.body.showPollResults === "Yes") {

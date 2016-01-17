@@ -1,4 +1,12 @@
 <h1>Poll It Together</h1><hr>
+
+{{{messages}}}
+<!-- {{#if errors}} -->
+  {{#each errors}}
+    {{this}}
+  {{/each}}
+<!-- {{/if}} -->
+
 <h2>Generate a new poll:</h2>
 
 <form role="form" action="/" method="post" id="poll-form">
