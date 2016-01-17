@@ -3,13 +3,14 @@ const express = require('express');
 const app = express();
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
+const validator = require('express-validator');
 const Poll = require('./poll');
 const PollCreator = require('./pollCreator');
 
-var pollCreator = new PollCreator;
-
 var hbars = require('express-handlebars');
 var bodyParser = require('body-parser');
+
+var pollCreator = new PollCreator;
 
 var PORT = process.env.PORT || 3000;
 server.listen(PORT, function() {
@@ -20,6 +21,7 @@ app.engine('handlebars', hbars({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
 app.use(bodyParser.json());
+app.use(validator());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -28,14 +30,25 @@ app.get('/', function(request, response) {
 });
 
 app.post('/', function(request, response) {
-  var poll = pollCreator.create(request.body);
+  //form validation:
+  request.checkBody('pollName', 'Poll name is required').notEmpty();
+  request.checkBody('pollDescription', 'Poll description is required').notEmpty();
+  request.checkBody('questions.question1', 'At least one question is required').notEmpty();
+  request.checkBody('showPollResults', 'Response to "show results on poll page" is required').notEmpty();
+  //
 
-  if(request.body.showPollResults === "No") {
+  var poll = pollCreator.create(request.body);
+  var errors = request.validationErrors();
+
+  console.log(errors);
+
+  if(errors) {
+    response.render('index');
+    // response.render('index', { flash: { type: 'alert-danger', messages: errors }});
+  } else if(request.body.showPollResults === "No") {
     response.redirect('/' + poll.links_url);
   } else if(request.body.showPollResults === "Yes") {
     response.redirect('/' + poll.show_links_url);
-  } else {
-    console.log("You must select whether to show results on poll page or not");
   }
 });
 
