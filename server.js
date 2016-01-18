@@ -1,7 +1,7 @@
 const path = require('path');
 const express = require('express');
 const app = express();
-const server = require('http').Server(app);
+const server = require('http').createServer(app);
 const io = require('socket.io')(server);
 const validator = require('express-validator');
 const Poll = require('./poll');
@@ -57,34 +57,42 @@ app.post('/', function(request, response) {
 
 app.get('/links/:id', function(request, response) {
   response.render('links', {
-    poll: pollCreator.poll
+    poll: pollCreator.findPollByLinksId(request.params.id)
   });
 });
 
 app.get('/showLinks/:id', function(request, response) {
   response.render('showLinks', {
-    poll: pollCreator.poll
+    poll: pollCreator.findPollByLinksId(request.params.id)
   });
 });
 
 app.get('/poll/:id', function(request, response) {
   response.render('pollView', {
-    poll: pollCreator.poll
+    poll: pollCreator.findPollById(request.params.id)
   });
 });
 
 app.get('/showPoll/:id', function(request, response) {
   response.render('showPollView', {
-    poll: pollCreator.poll
+    poll: pollCreator.findPollById(request.params.id)
   });
 });
 
 app.get('/admin/:id', function(request, response) {
   response.render('admin', {
-    poll: pollCreator.poll
+    poll: pollCreator.findPollByAdminId(request.params.id)
   });
 });
 
-io.on('connection', function (socket) {
-  console.log('Someone has connected.');
+io.on('connection', function(socket) {
+  io.sockets.emit('usersConnected', io.engine.clientsCount);
+
+  socket.on('message', function (channel, message) {
+    if(channel === 'votes') {
+      var poll = pollCreator.findPollById(message.poll_id);
+      poll.recordResponse(message);
+      io.sockets.emit('responses', poll.responses);
+    }
+  });
 });

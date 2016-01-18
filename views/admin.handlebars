@@ -3,6 +3,8 @@
 <hr>
 <h3>Time remaining:</h3>
 <h3>Real-time results:</h3>
+<div id="admin-poll-results"></div>
+
 <hr>
 
 <h3>Description:</h3>
@@ -10,7 +12,7 @@
 
 <h3>Questions:</h3>
 {{#each poll.questions}}
-  <p>{{this}}&nbsp&nbsp<button class="pollVote" type="button" name="pollVote">Vote</button></p>
+  <p>{{this}}&nbsp&nbsp<button class="poll-vote" type="button" name="poll-vote">Vote</button></p>
 {{/each}}
 
 <script type="text/javascript" src="/admin.js"></script>
