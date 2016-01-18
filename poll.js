@@ -6,12 +6,10 @@ function Poll(pollData) {
   this.id = this.generateId(12);
   this.links_id = this.generateId(12);
   this.links_url = 'links/' + this.links_id;
-  this.show_links_id = this.generateId(12);
-  this.show_links_url = 'showLinks/' + this.show_links_id;
+  this.show_links_url = 'showLinks/' + this.links_id;
   this.poll_id = this.generateId(12);
   this.poll_url = 'poll/' + this.poll_id;
-  this.show_poll_id = this.generateId(12);
-  this.show_poll_url = 'showPoll/' + this.show_poll_id;
+  this.show_poll_url = 'showPoll/' + this.poll_id;
   this.admin_id = this.generateId(12);
   this.admin_url = 'admin/' + this.admin_id;
   this.questions = pollData.questions;

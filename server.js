@@ -63,7 +63,7 @@ app.get('/links/:id', function(request, response) {
 
 app.get('/showLinks/:id', function(request, response) {
   response.render('showLinks', {
-    poll: pollCreator.findPollById(request.params.id)
+    poll: pollCreator.findPollByLinksId(request.params.id)
   });
 });
 
@@ -92,7 +92,7 @@ io.on('connection', function(socket) {
     if(channel === 'votes') {
       var poll = pollCreator.findPollById(message.poll_id);
       poll.recordResponse(message);
-      io.sockets.emit('responses-' + poll.admin_id, poll.responses);
+      io.sockets.emit('responses', poll.responses);
     }
   });
 });

@@ -8,8 +8,7 @@ Array.prototype.last = function(){
   return this[this.length - 1];
 };
 
-var adminId = window.location.pathname.split('/').last();
-socket.on('responses-' + adminId, function(responses) {
+socket.on('responses', function(responses) {
   updatePollResults(responses);
 });
 
