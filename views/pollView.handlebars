@@ -1,13 +1,15 @@
 <h1 id="poll-view-name">{{poll.name }}</h1>
 
-<h3>Time remaining:</h3>
+<div id="poll-view-page">
+  <h3>Time remaining:</h3>
 
-<h3>Description:</h3>
-<p id="poll-view-description">{{poll.description }}</p>
+  <h3>Description:</h3>
+  <p id="poll-view-description">{{poll.description }}</p>
 
-<h3>Questions:</h3>
-{{#each poll.questions}}
-  <p>{{this}}&nbsp&nbsp<button class="poll-vote" type="button" name="poll-vote">Vote</button></p>
-{{/each}}
+  <h3>Questions:</h3>
+  {{#each poll.questions}}
+    <p>{{this}}&nbsp&nbsp<button class="poll-vote" type="button" name="poll-vote">Vote</button></p>
+  {{/each}}
+</div>
 
 <script type="text/javascript" src="/pollView.js"></script>

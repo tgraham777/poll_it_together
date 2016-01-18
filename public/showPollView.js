@@ -32,3 +32,7 @@ function updatePollResults(responses) {
 
   $('#poll-results').empty().append(pollResults);
 }
+
+socket.on('pollClosed', function() {
+  $('#show-poll-view-page').empty().append('<h2>Poll Closed</h2>');
+});

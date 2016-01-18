@@ -14,8 +14,17 @@ socket.on('responses', function(responses) {
 
 function updatePollResults(responses) {
   var pollResults = $.map(responses, function(value, key){
-    return '<p>' + key + ' - ' + value + '</p>'
+    return '<p>' + key + ' - ' + value + '</p>';
   });
 
   $('#admin-poll-results').empty().append(pollResults);
 }
+
+$(document).ready(function(){
+  $('#end-poll').on('click', function() {
+    $('#admin-poll-closed').empty().append('<h2>Poll is now closed.</h2>');
+    socket.send('endPoll', {
+      message: "Poll Closed"
+    });
+  });
+});

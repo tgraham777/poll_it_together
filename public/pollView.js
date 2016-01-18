@@ -20,3 +20,7 @@ function sendPollResponse(pollResponse) {
    poll_response: pollResponse
   });
 };
+
+socket.on('pollClosed', function() {
+  $('#poll-view-page').empty().append('<h2>Poll Closed</h2>');
+});

@@ -93,6 +93,8 @@ io.on('connection', function(socket) {
       var poll = pollCreator.findPollById(message.poll_id);
       poll.recordResponse(message);
       io.sockets.emit('responses', poll.responses);
+    } else if(channel === 'endPoll') {
+      io.sockets.emit('pollClosed', message);
     }
   });
 });

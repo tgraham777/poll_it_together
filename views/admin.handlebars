@@ -1,16 +1,20 @@
 <h1 id="admin-view-name">Admin Dashboard - "{{poll.name }}"</h1>
 
 <hr>
+<div id="admin-poll-closed"></div>
 <h3>Time remaining:</h3>
 <h3>Real-time results:</h3>
 <div id="admin-poll-results"></div>
 
 <hr>
 
-<h3>Description:</h3>
+<button type="button" id="end-poll" name="end-poll">End Poll</button>
+
+<h2>Poll Summary</h2>
+<h4>Description:</h4>
 <p id="poll-view-description">{{poll.description }}</p>
 
-<h3>Questions:</h3>
+<h4>Questions:</h4>
 {{#each poll.questions}}
   <p>{{this}}&nbsp&nbsp<button class="poll-vote" type="button" name="poll-vote">Vote</button></p>
 {{/each}}
