@@ -1,6 +1,8 @@
+var socket = io();
+
 $(document).ready(function(){
   $('.poll-vote').on('click', function() {
-    var pollResponse = $(this).closest("p").text().replace("Vote", "").replace(/\s+/g, "");
+    var pollResponse = $(this).closest("p").text().replace("Vote", "").trim();
     sendPollResponse(pollResponse);
   });
 });
@@ -12,9 +14,9 @@ Array.prototype.last = function(){
 var pollId = window.location.pathname.split('/').last();
 
 function sendPollResponse(pollResponse) {
-  socket.send('voteCast', {
-          pollId: pollId,
-    pollResponse: pollResponse,
-       responder: socket.id
+  socket.send('votes', {
+       responder: socket.id,
+         poll_id: pollId,
+   poll_response: pollResponse
   });
 };

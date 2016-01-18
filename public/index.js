@@ -4,7 +4,7 @@ $('.add-new-button').on('click', function() {
 
 function appendQuestion() {
   var questionNumber = $('.question').length + 1;
-  var newQuestion = 'Question '
+  var newQuestion = 'Option '
                     + questionNumber + ':<br><input data-id="'
                     + questionNumber + '" type="text" name="questions[question'
                     + questionNumber + ']" class="question" id="question'

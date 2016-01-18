@@ -2,8 +2,7 @@ const path = require('path');
 const express = require('express');
 const app = express();
 const server = require('http').createServer(app);
-const io = require('socket.io');
-const socket = io.listen(server);
+const io = require('socket.io')(server);
 const validator = require('express-validator');
 const Poll = require('./poll');
 const PollCreator = require('./pollCreator');
@@ -11,8 +10,6 @@ const hbars = require('express-handlebars');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const flash = require('connect-flash');
-const redis = require('redis');
-const client = redis.createClient();
 
 var pollCreator = new PollCreator;
 
@@ -88,24 +85,14 @@ app.get('/admin/:id', function(request, response) {
   });
 });
 
-socket.on('connection', function(client) {
-  socket.sockets.emit('usersConnected', socket.engine.clientsCount);
+io.on('connection', function(socket) {
+  io.sockets.emit('usersConnected', io.engine.clientsCount);
 
-  const subscribe = redis.createClient();
-
-  subscribe.on("message", function(channel, message) {
-    // if (channel === 'voteCast') {
-      // var poll = pollCreator.findPollById(message.pollId);
-      client.send(message);
-    // }
-  });
-  subscribe.subscribe('voteCast');
-
-  client.on('message', function(channel, msg) {
-    console.log(msg);
-  });
-
-  client.on('disconnect', function() {
-    subscribe.quit();
+  socket.on('message', function (channel, message) {
+    if(channel === 'votes') {
+      var poll = pollCreator.findPollById(message.poll_id);
+      poll.recordResponse(message);
+      io.sockets.emit('responses-' + poll.admin_id, poll.responses);
+    }
   });
 });

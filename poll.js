@@ -24,14 +24,14 @@ Poll.prototype.generateId = function(num) {
 }
 
 Poll.prototype.recordResponse = function(message) {
-  if (!this.respondants[message.responder]) {
+  if(!this.respondants[message.responder]) {
     this.respondants[message.responder] = true;
-    this.countResponse(message.pollResponse);
+    this.countResponses(message.poll_response);
   }
 }
 
-Poll.prototype.countResponse = function(pollResponse) {
-  if (this.responses[pollResponse]){
+Poll.prototype.countResponses = function(pollResponse) {
+  if(this.responses[pollResponse]) {
     this.responses[pollResponse]++;
   } else {
     this.responses[pollResponse] = 1;
