@@ -4,11 +4,16 @@ function Poll(pollData) {
   this.name = pollData.pollName;
   this.description = pollData.pollDescription;
   this.id = this.generateId(12);
-  this.links_url = 'links/' + this.generateId(12);
-  this.show_links_url = 'showLinks/' + this.generateId(12);
-  this.poll_url = 'poll/' + this.generateId(12);
-  this.show_poll_url = 'showPoll/' + this.generateId(12);
-  this.admin_url = 'admin/' + this.generateId(12);
+  this.links_id = this.generateId(12);
+  this.links_url = 'links/' + this.links_id;
+  this.show_links_id = this.generateId(12);
+  this.show_links_url = 'showLinks/' + this.show_links_id;
+  this.poll_id = this.generateId(12);
+  this.poll_url = 'poll/' + this.poll_id;
+  this.show_poll_id = this.generateId(12);
+  this.show_poll_url = 'showPoll/' + this.show_poll_id;
+  this.admin_id = this.generateId(12);
+  this.admin_url = 'admin/' + this.admin_id;
   this.questions = pollData.questions;
   this.responses = {};
   this.respondants = {};
@@ -16,6 +21,21 @@ function Poll(pollData) {
 
 Poll.prototype.generateId = function(num) {
   return crypto.randomBytes(num).toString('hex');
+}
+
+Poll.prototype.recordResponse = function(message) {
+  if (!this.respondants[message.responder]) {
+    this.respondants[message.responder] = true;
+    this.countResponse(message.pollResponse);
+  }
+}
+
+Poll.prototype.countResponse = function(pollResponse) {
+  if (this.responses[pollResponse]){
+    this.responses[pollResponse]++;
+  } else {
+    this.responses[pollResponse] = 1;
+  }
 }
 
 module.exports = Poll;

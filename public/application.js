@@ -1,5 +1,9 @@
 var socket = io();
 
-// socket.on('connection', function () {
-//   console.log('You have connected!');
-// });
+socket.on('usersConnected', function (count) {
+  console.log('Connected users: ' + count);
+});
+
+socket.on('message', function (message) {
+  console.log('Something came along on the "message" channel:', message.text);
+});
