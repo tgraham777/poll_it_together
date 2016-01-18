@@ -34,7 +34,7 @@ app.get('/', function(request, response) {
 
 app.post('/', function(request, response) {
   //form validation:
-  request.checkBody('pollName', 'Poll name is required').notEmpty();
+  request.checkBody('pollName', ' Poll name is required').notEmpty();
   request.checkBody('pollDescription', 'Poll description is required').notEmpty();
   request.checkBody('questions.question1', 'At least one question is required').notEmpty();
   request.checkBody('showPollResults', 'Response to "show results on poll page" is required').notEmpty();

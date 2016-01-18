@@ -1,6 +1,6 @@
 $(document).ready(function(){
   $('.poll-vote').on('click', function() {
-    var pollResponse = $(this).closest("p").text().replace("Vote", "");
+    var pollResponse = $(this).closest("p").text().replace("Vote", "").replace(/\s+/g, "");
     sendPollResponse(pollResponse);
   });
 });
