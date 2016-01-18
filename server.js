@@ -2,7 +2,8 @@ const path = require('path');
 const express = require('express');
 const app = express();
 const server = require('http').createServer(app);
-const io = require('socket.io')(server);
+const io = require('socket.io');
+const socket = io.listen(server);
 const validator = require('express-validator');
 const Poll = require('./poll');
 const PollCreator = require('./pollCreator');
@@ -10,6 +11,8 @@ const hbars = require('express-handlebars');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const flash = require('connect-flash');
+const redis = require('redis');
+const client = redis.createClient();
 
 var pollCreator = new PollCreator;
 
@@ -34,7 +37,7 @@ app.get('/', function(request, response) {
 
 app.post('/', function(request, response) {
   //form validation:
-  request.checkBody('pollName', ' Poll name is required').notEmpty();
+  request.checkBody('pollName', 'Poll name is required').notEmpty();
   request.checkBody('pollDescription', 'Poll description is required').notEmpty();
   request.checkBody('questions.question1', 'At least one question is required').notEmpty();
   request.checkBody('showPollResults', 'Response to "show results on poll page" is required').notEmpty();
@@ -85,13 +88,24 @@ app.get('/admin/:id', function(request, response) {
   });
 });
 
-io.on('connection', function (socket) {
-  io.sockets.emit('usersConnected', io.engine.clientsCount);
+socket.on('connection', function(client) {
+  socket.sockets.emit('usersConnected', socket.engine.clientsCount);
 
-  socket.on('message', function (channel, message) {
-    if (channel === 'voteCast') {
-      var poll = pollCreator.findPollById(message.pollId);
-      poll.recordResponse(message);
-    }
+  const subscribe = redis.createClient();
+
+  subscribe.on("message", function(channel, message) {
+    // if (channel === 'voteCast') {
+      // var poll = pollCreator.findPollById(message.pollId);
+      client.send(message);
+    // }
+  });
+  subscribe.subscribe('voteCast');
+
+  client.on('message', function(channel, msg) {
+    console.log(msg);
+  });
+
+  client.on('disconnect', function() {
+    subscribe.quit();
   });
 });
