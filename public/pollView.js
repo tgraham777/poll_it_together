@@ -22,5 +22,5 @@ function sendPollResponse(pollResponse) {
 };
 
 socket.on('pollClosed', function() {
-  $('#poll-view-page').empty().append('<h3>Poll Closed</h3>');
+  $('#poll-view-page').empty().append('<h2>Poll Closed</h2>');
 });

@@ -22,8 +22,9 @@ function updatePollResults(responses) {
 
 $(document).ready(function(){
   $('#end-poll').on('click', function() {
+    $('#admin-poll-closed').empty().append('<h2>Poll is now closed.</h2>');
     socket.send('endPoll', {
-       message: "Poll Closed"
+      message: "Poll Closed"
     });
   });
 });
