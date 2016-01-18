@@ -24,11 +24,11 @@ Poll.prototype.generateId = function(num) {
 Poll.prototype.recordResponse = function(message) {
   if(!this.respondants[message.responder]) {
     this.respondants[message.responder] = true;
-    this.countResponses(message.poll_response);
+    this.addResponse(message.poll_response);
   }
 }
 
-Poll.prototype.countResponses = function(pollResponse) {
+Poll.prototype.addResponse = function(pollResponse) {
   if(this.responses[pollResponse]) {
     this.responses[pollResponse]++;
   } else {
