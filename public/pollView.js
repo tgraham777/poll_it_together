@@ -3,7 +3,8 @@ var socket = io();
 $(document).ready(function(){
   $('.poll-vote').on('click', function() {
     var pollResponse = $(this).closest("p").text().replace("Vote", "").trim();
-    sendPollResponse(pollResponse);
+    var polleeName = $('#pollee-name').val();
+    sendPollResponse(pollResponse, polleeName);
   });
 
   var timeEnd = $('#time-end').text();
@@ -37,11 +38,12 @@ Array.prototype.last = function(){
 
 var pollId = window.location.pathname.split('/').last();
 
-function sendPollResponse(pollResponse) {
+function sendPollResponse(pollResponse, polleeName) {
   socket.send('votes', {
        responder: socket.id,
          poll_id: pollId,
-   poll_response: pollResponse
+   poll_response: pollResponse,
+     pollee_name: polleeName
   });
 };
 
