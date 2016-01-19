@@ -28,7 +28,7 @@ $(document).ready(function(){
     if(t <= 0){
       clearInterval(timeinterval);
     }
-  },1000);
+  }, 1000);
 });
 
 Array.prototype.last = function(){

@@ -22,7 +22,7 @@ $(document).ready(function(){
     if(t <= 0){
       clearInterval(timeinterval);
     }
-  },1000);
+  }, 1000);
 });
 
 Array.prototype.last = function(){
@@ -40,5 +40,5 @@ function sendPollResponse(pollResponse) {
 };
 
 socket.on('pollClosed', function() {
-  $('#poll-view-page').empty().append('<h2>Poll Closed</h2>');
+  $('#poll-view-page').empty().append('<h2>Poll is now closed.</h2>');
 });

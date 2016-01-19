@@ -5,6 +5,24 @@ $(document).ready(function(){
     var pollResponse = $(this).closest("p").text().replace("Vote", "").trim();
     sendPollResponse(pollResponse);
   });
+
+  var timeinterval = setInterval(function() {
+    var timeEnd = $('#time-end').text();
+    var t = Date.parse(timeEnd) - Date.parse(new Date());
+    var seconds = Math.floor( (t/1000) % 60 );
+    var minutes = Math.floor( (t/1000/60) % 60 );
+    var hours = Math.floor( (t/(1000*60*60)) % 24 );
+    var days = Math.floor( t/(1000*60*60*24) );
+
+    var clock = $('#show-poll-view-time-clock');
+    clock.empty().append(days + ' days, ' +
+                         hours + ' hours, ' +
+                         minutes + ' minutes, ' +
+                         seconds + ' seconds');
+    if(t <= 0){
+      clearInterval(timeinterval);
+    }
+  }, 1000);
 });
 
 Array.prototype.last = function(){
@@ -34,5 +52,5 @@ function updatePollResults(responses) {
 }
 
 socket.on('pollClosed', function() {
-  $('#show-poll-view-page').empty().append('<h2>Poll Closed</h2>');
+  $('#show-poll-view-page').empty().append('<h2>Poll is now closed.</h2>');
 });
