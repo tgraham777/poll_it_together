@@ -13,14 +13,16 @@
 
   Name to send with response (optional): <input type="text" name="pollee-name" id="pollee-name" placeholder="Enter name...">
 
-  <h3>Questions:</h3>
+  <h3 id="question-title">Options:</h3>
   {{#each poll.questions}}
     <p>{{this}}&nbsp&nbsp<button class="poll-vote" type="button" name="poll-vote">Vote</button></p>
   {{/each}}
 </div>
 
 <hr>
-Real-time results:
+
+<div id="show-page-poll-results">Real-time results:</div>
 <div id="poll-results"></div>
 
+<link rel="stylesheet" type="text/css" href="../css/style.css">
 <script type="text/javascript" src="/showPollView.js"></script>

@@ -138,7 +138,7 @@ body > ul > li {
 
 #question-title {
   color: black;
-  font-size: 1.5em;
+  font-size: 25px;
   text-decoration: underline;
 }
 
@@ -146,6 +146,22 @@ body > ul > li {
   color: black;
   font-size: 1.75em;
   text-decoration: underline;
+}
+
+#show-poll-view-page {
+  font-size: 1.75em;
+  color: #ECECEA;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+#show-poll-view-page > h3:nth-child(3) {
+  color: black;
+  font-size: 25px;
+  text-decoration: underline;
+}
+
+#poll-results {
+  font-size: 20px;;
 }
 
 body > div.poll-created {
@@ -156,6 +172,12 @@ body > div.poll-created {
 
 #end-poll {
   font-size: 15px;
+}
+
+#show-page-poll-results {
+  color: black;
+  font-size: 1.75em;
+  text-decoration: underline;
 }
 
 body > h3.rt-results {
