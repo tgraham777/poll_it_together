@@ -1,0 +1,206 @@
+#main-title {
+  font-family: 'Anton', sans-serif;
+  color: #ECECEA;
+  background-color: #558C89;
+  text-align: center;
+  padding: 30px;
+  font-size: 4.75em;
+  margin: -20px;
+}
+
+body {
+  background-color: #74AFAD !important;
+  text-align: center;
+}
+
+#datetimepicker {
+  margin-left: 350px;
+  margin-right: -230px;
+}
+
+#calendar-text {
+  font-size: 19px;
+}
+
+body > h2 {
+  color: #C63D0F;
+  font-size: 3em;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+#poll-form {
+  font-family: 'Roboto Condensed', sans-serif;
+  color: black;
+  font-size: 1.75em;
+}
+
+button {
+  color: #ECECEA !important;
+  background-color: #C63D0F;
+}
+
+#poll-form > input.poll-submit {
+  color: #ECECEA;
+  background-color: #C63D0F;
+}
+
+body > h1 {
+  color: #ECECEA;
+  background-color: #558C89;
+  padding: 30px;
+  font-size: 4.75em;
+  margin: 0px;
+  font-family: 'Anton', sans-serif;
+}
+
+body > p {
+  padding: 30px;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 1.75em;
+  color: #C63D0F;
+}
+
+body ul {
+  font-size: 1.75em;
+  color: #ECECEA;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+body > ul > li {
+  list-style: none;
+}
+
+#poll-end {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 1.5em;
+  color: #BB2222;
+}
+
+#poll-end2 {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 1.5em;
+  color: #BB2222;
+  padding-top: 10px;
+}
+
+#poll-desc-title {
+  font-size: 5px;
+}
+
+.poll-created {
+  padding-top: 10px;
+}
+
+#admin-poll-created {
+  color: #DDD;
+}
+
+#admin-poll-closed {
+  font-size: 20px;
+}
+
+#admin-response-count {
+  font-size: 20px;
+}
+
+#admin-poll-results {
+  font-size: 20px;
+}
+
+#admin-name-results {
+  font-size: 20px;
+}
+
+#poll-view-description {
+  color: black;
+}
+
+#poll-view-questions {
+  color: black;
+}
+
+#poll-view-page {
+  font-size: 1.75em;
+  color: #ECECEA;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+#poll-view-page > h3:nth-child(3) {
+  color: black;
+  font-size: 25px;
+  text-decoration: underline;
+}
+
+#pollee-name {
+  font-size: 20px;
+  color: black;
+}
+
+#question-title {
+  color: black;
+  font-size: 25px;
+  text-decoration: underline;
+}
+
+#poll-view-page > h3:nth-child(5) {
+  color: black;
+  font-size: 1.75em;
+  text-decoration: underline;
+}
+
+#show-poll-view-page {
+  font-size: 1.75em;
+  color: #ECECEA;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+#show-poll-view-page > h3:nth-child(3) {
+  color: black;
+  font-size: 25px;
+  text-decoration: underline;
+}
+
+#poll-results {
+  font-size: 20px;;
+}
+
+body > div.poll-created {
+  color: #ECECEA;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 1.5em;
+}
+
+#end-poll {
+  font-size: 15px;
+}
+
+#show-page-poll-results {
+  color: black;
+  font-size: 1.75em;
+  text-decoration: underline;
+}
+
+body > h3.rt-results {
+  color: #ECECEA;
+  font-size: 2.5em;
+}
+
+body > h3.rt-results-indiv {
+  color: #ECECEA;
+  font-size: 2.5em;
+}
+
+body > h2.summary {
+  font-size: 4.25em;
+}
+
+body > h4 {
+  color: black;
+  font-size: 2em;
+  text-decoration: underline;
+}
+
+body > p {
+  font-size: 1.75em;
+}
+​

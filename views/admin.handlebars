@@ -1,6 +1,6 @@
 </div><h1 id="admin-view-name">Admin Dashboard - "{{poll.name }}"</h1>
 
-Poll created on: <div id="created-on"> {{poll.created_on }} </div><br>
+<div class="poll-created" id="admin-poll-created">Poll created on: <div id="created-on"> {{poll.created_on }} </div></div><br>
 
 <div id="poll-end">
   Poll closes: <div id="time-end"> {{poll.time_end }} </div><br>
@@ -16,21 +16,22 @@ Poll created on: <div id="created-on"> {{poll.created_on }} </div><br>
 
 <h3>Response count:</h3><div id="admin-response-count"></div>
 
-<h3>Real-time results:</h3>
+<h3 class="rt-results">Real-time results:</h3>
 <div id="admin-poll-results"></div>
 
-<h3>Responses by individual:</h3>
+<h3 class="rt-results-indiv">Responses by individual:</h3>
 <div id="admin-name-results"></div>
 
 <hr>
 
-<h2>Poll Summary</h2>
+<h2 class="summary">Poll Summary</h2>
 <h4>Description:</h4>
 <p id="poll-view-description">{{poll.description }}</p>
 
-<h4>Questions:</h4>
+<h4>Options:</h4>
 {{#each poll.questions}}
-  <p>{{this}}</p>
+  <p id="poll-view-questions">{{this}}</p>
 {{/each}}
 
+<link rel="stylesheet" type="text/css" href="../css/style.css">
 <script type="text/javascript" src="/admin.js"></script>

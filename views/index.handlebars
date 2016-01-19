@@ -6,7 +6,7 @@
 <h2>Generate a new poll:</h2>
 
 <form role="form" action="/" method="post" id="poll-form">
-  Poll name: <input type="text" name="pollName" class="pollName" placeholder="Enter a name"><br>
+  Poll name:<br> <input type="text" name="pollName" class="pollName" placeholder="Enter a name"><br><br>
   Poll description/question:<br>
   <textarea rows="4" cols="50" name="pollDescription" class="pollDescription" form="poll-form" placeholder="Enter description here..."></textarea><br><br>
 
@@ -14,7 +14,7 @@
 
   <div class="question-list">
     Option 1:<br>
-    <input data-id="1" type="text" name="questions[question1]" class="question" id="question1" placeholder="Enter a question"><br><br>
+    <input data-id="1" type="text" name="questions[question1]" class="question" id="question1" placeholder="Enter an option"><br><br>
   </div>
 
   Select time to auto-close (manual close if left unchanged):
@@ -23,7 +23,7 @@
       <div class='col-sm-6'>
         <div class="form-group">
           <div class='input-group date' id='datetimepicker'>
-            <input type='text' name="pollEnd" class="form-control" />
+            <input type='text' name="pollEnd" class="form-control" id="calendar-text"/>
             <span class="input-group-addon">
               <span class="glyphicon glyphicon-calendar"></span>
             </span>
