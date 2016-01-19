@@ -40,7 +40,7 @@ describe('server.js', function () {
       .end(function(error, response) {
         expect(response.header['location']).to.eq('/');
         done();
-      })
+      });
   });
 
   it('POST "/" with required data and "No" to showPollResults creates poll and redirects to links page', function(done) {
@@ -60,7 +60,7 @@ describe('server.js', function () {
       .end(function(error, response) {
         expect(response.header['location']).to.include('/links');
         done();
-      })
+      });
   });
 
   it('POST "/" with required data and "Yes" to showPollResults creates poll and redirects to showLinks page', function(done) {
@@ -80,6 +80,6 @@ describe('server.js', function () {
       .end(function(error, response) {
         expect(response.header['location']).to.include('/showLinks');
         done();
-      })
+      });
   });
 });

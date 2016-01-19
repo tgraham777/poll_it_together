@@ -13,7 +13,7 @@ var pollParams = {
   },
   pollEnd: '08/22/2016 8:16 AM',
   showPollResults: 'Yes'
-}
+};
 var poll = new Poll(pollParams);
 
 describe('Poll', function () {
@@ -178,4 +178,4 @@ describe('Poll', function () {
     expect(poll.responses['AfaAEF']).eql(2);
     done();
   });
-})
+});
