@@ -18,9 +18,13 @@ body {
   margin-right: -230px;
 }
 
+#calendar-text {
+  font-size: 19px;
+}
+
 body > h2 {
   color: #C63D0F;
-  font-size: 3.25em;
+  font-size: 3em;
   font-family: 'Roboto Condensed', sans-serif;
 }
 
@@ -66,6 +70,44 @@ body > ul > li {
   list-style: none;
 }
 
+#poll-end {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 1.5em;
+  color: #BB2222;
+}
+
+.poll-created {
+  padding-top: 10px;
+}
+
+#admin-poll-created {
+  color: #DDD;
+}
+
+#admin-poll-closed {
+  font-size: 20px;
+}
+
+#admin-response-count {
+  font-size: 20px;
+}
+
+#admin-poll-results {
+  font-size: 20px;
+}
+
+#admin-name-results {
+  font-size: 20px;
+}
+
+#poll-view-description {
+  color: black;
+}
+
+#poll-view-questions {
+  color: black;
+}
+
 #poll-view-page {
   font-size: 1.75em;
   color: #ECECEA;
@@ -90,9 +132,18 @@ body > div.poll-created {
   font-size: 1.5em;
 }
 
+#end-poll {
+  font-size: 15px;
+}
+
 body > h3.rt-results {
   color: #ECECEA;
-  font-size: 4em;
+  font-size: 2.5em;
+}
+
+body > h3.rt-results-indiv {
+  color: #ECECEA;
+  font-size: 2.5em;
 }
 
 body > h2.summary {

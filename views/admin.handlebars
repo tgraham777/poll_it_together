@@ -1,6 +1,6 @@
 </div><h1 id="admin-view-name">Admin Dashboard - "{{poll.name }}"</h1>
 
-<div class="poll-created">Poll created on: <div id="created-on"> {{poll.created_on }} </div></div><br>
+<div class="poll-created" id="admin-poll-created">Poll created on: <div id="created-on"> {{poll.created_on }} </div></div><br>
 
 <div id="poll-end">
   Poll closes: <div id="time-end"> {{poll.time_end }} </div><br>
@@ -19,7 +19,7 @@
 <h3 class="rt-results">Real-time results:</h3>
 <div id="admin-poll-results"></div>
 
-<h3>Responses by individual:</h3>
+<h3 class="rt-results-indiv">Responses by individual:</h3>
 <div id="admin-name-results"></div>
 
 <hr>
@@ -30,7 +30,7 @@
 
 <h4>Questions:</h4>
 {{#each poll.questions}}
-  <p>{{this}}</p>
+  <p id="poll-view-questions">{{this}}</p>
 {{/each}}
 
 <link rel="stylesheet" type="text/css" href="../css/style.css">
