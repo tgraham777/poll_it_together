@@ -46,7 +46,7 @@ function sendPollResponse(pollResponse, polleeName) {
    poll_response: pollResponse,
      pollee_name: polleeName
   });
-};
+}
 
 socket.on('responses', function(responses) {
   updatePollResults(responses);
@@ -54,7 +54,7 @@ socket.on('responses', function(responses) {
 
 function updatePollResults(responses) {
   var pollResults = $.map(responses, function(value, key){
-    return '<p>' + key + ' - ' + value + '</p>'
+    return '<p>' + key + ' - ' + value + '</p>';
   });
 
   $('#poll-results').empty().append(pollResults);

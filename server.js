@@ -11,11 +11,11 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const flash = require('connect-flash');
 
-var pollCreator = new PollCreator;
+var pollCreator = new PollCreator();
 
 var PORT = process.env.PORT || 3000;
 server.listen(PORT, function() {
-  console.log("Server is up and running on port: " + PORT)
+  console.log("Server is up and running on port: " + PORT);
 });
 
 app.engine('handlebars', hbars({defaultLayout: 'main'}));

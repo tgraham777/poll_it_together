@@ -45,7 +45,7 @@ function sendPollResponse(pollResponse, polleeName) {
    poll_response: pollResponse,
      pollee_name: polleeName
   });
-};
+}
 
 socket.on('pollClosed', function() {
   $('#poll-view-page').empty().append('<h2>Poll is now closed.</h2>');
