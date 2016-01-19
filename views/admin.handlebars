@@ -1,15 +1,16 @@
 </div><h1 id="admin-view-name">Admin Dashboard - "{{poll.name }}"</h1>
 
-<div class="poll-end">
-  Poll created on: <div id="created-on"> {{poll.created_on }} </div><br>
-  Poll closes: <div id="time-end"> {{poll.time_end }} </div>
+Poll created on: <div id="created-on"> {{poll.created_on }} </div><br>
+
+<div id="poll-end">
+  Poll closes: <div id="time-end"> {{poll.time_end }} </div><br>
 </div>
 
 <button type="button" id="end-poll" name="end-poll">End Poll</button>
 
 <hr>
 <div id="admin-poll-closed">
-  <h3>Time remaining:</h3>
+  <h3 id="time-remaining">Time remaining:</h3>
   <div id="admin-time-clock"></div>
 </div>
 
@@ -24,7 +25,7 @@
 
 <h4>Questions:</h4>
 {{#each poll.questions}}
-  <p>{{this}}&nbsp&nbsp<button class="poll-vote" type="button" name="poll-vote">Vote</button></p>
+  <p>{{this}}</p>
 {{/each}}
 
 <script type="text/javascript" src="/admin.js"></script>
