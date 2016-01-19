@@ -116,4 +116,66 @@ describe('Poll', function () {
     expect(poll.response_count).eql(0);
     done();
   });
+
+  it('saves the response for a new respondant', function (done) {
+    var response = {
+      responder: 'adHkn46-qDuSpe7qAAAC',
+      poll_id: '217f5e6dd598d3c37ee71fcd',
+      poll_response: 'AfaAEF',
+      pollee_name: 'Germaine'
+    };
+    poll.recordResponse(response);
+
+    expect(poll.respondants).eql({ 'adHkn46-qDuSpe7qAAAC': true });
+    expect(poll.responses).eql({ 'AfaAEF': 1 });
+    done();
+  });
+
+  it('does NOT save the response for a previous/existing respondant', function (done) {
+    expect(poll.respondants).eql({ 'adHkn46-qDuSpe7qAAAC': true });
+    expect(poll.responses).eql({ 'AfaAEF': 1 });
+
+    var response = {
+      responder: 'adHkn46-qDuSpe7qAAAC',
+      poll_id: '217f5e6dd598d3c37ee71fcd',
+      poll_response: 'AfaAEF',
+      pollee_name: 'Germaine'
+    };
+    poll.recordResponse(response);
+
+    expect(poll.respondants).eql({ 'adHkn46-qDuSpe7qAAAC': true });
+    expect(poll.responses).eql({ 'AfaAEF': 1 });
+    done();
+  });
+
+  it('adds responses with names to the name_responses object', function (done) {
+    var response = {
+      responder: 'ACadHkn46uSpe7qAA',
+      poll_id: '217f5e6dd598d3c37ee71fcd',
+      poll_response: 'Hello',
+      pollee_name: 'Todd'
+    };
+
+    expect(poll.name_responses[response.pollee_name]).to.be.undefined;
+
+    poll.addNameResponse(response.pollee_name, response.poll_response);
+
+    expect(poll.name_responses[response.pollee_name]).to.eql(response.poll_response);
+    done();
+  });
+
+  it('adds new responses to the responses object and increments the count on existing votes', function (done) {
+    expect(poll.responses['AfaAEF']).eql(1);
+
+    var response = {
+      responder: 'uSpdACaHkn46e7qAA',
+      poll_id: '217f5e6dd598d3c37ee71fcd',
+      poll_response: 'AfaAEF',
+      pollee_name: 'Roger'
+    };
+    poll.addCountResponse(response.poll_response);
+
+    expect(poll.responses['AfaAEF']).eql(2);
+    done();
+  });
 })
