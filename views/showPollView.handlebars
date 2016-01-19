@@ -9,7 +9,9 @@
   <div id="show-poll-view-time-clock"></div>
 
   <h3>Description:</h3>
-  <p id="poll-view-description">{{poll.description }}</p>
+  <p id="poll-view-description">{{poll.description }}</p><hr>
+
+  Name to send with response (optional): <input type="text" name="pollee-name" id="pollee-name" placeholder="Enter name...">
 
   <h3>Questions:</h3>
   {{#each poll.questions}}
