@@ -13,5 +13,6 @@ function appendQuestion() {
 }
 
 $(function() {
-  $('#datetimepicker').datetimepicker();
+  var dateToday = new Date();
+  $('#datetimepicker').datetimepicker({minDate: dateToday});
 });

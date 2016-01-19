@@ -4,6 +4,7 @@ function Poll(pollData) {
   this.name = pollData.pollName;
   this.description = pollData.pollDescription;
   this.id = this.generateId(12);
+  this.time_end = pollData.pollEnd;
   this.links_id = this.generateId(12);
   this.links_url = 'links/' + this.links_id;
   this.show_links_url = 'showLinks/' + this.links_id;

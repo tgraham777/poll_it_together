@@ -40,8 +40,6 @@ app.post('/', function(request, response) {
   request.checkBody('showPollResults', 'Response to "show results on poll page" is required').notEmpty();
   //
 
-  console.log(request.body);
-
   var poll = pollCreator.create(request.body);
   var errors = request.validationErrors();
 
