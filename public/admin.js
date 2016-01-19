@@ -42,13 +42,33 @@ Array.prototype.last = function(){
 };
 
 socket.on('responses', function(responses) {
-  updatePollResults(responses);
+  updateResults(responses);
 });
 
-function updatePollResults(responses) {
-  var pollResults = $.map(responses, function(value, key){
+socket.on('nameResponses', function(responses) {
+  updateNameResults(responses);
+});
+
+socket.on('count', function(response) {
+  updateCount(response);
+});
+
+function updateCount(response) {
+  $('#admin-response-count').empty().append(response);
+}
+
+function updateResults(responses) {
+  var results = $.map(responses, function(value, key){
     return '<p>' + key + ' - ' + value + '</p>';
   });
 
-  $('#admin-poll-results').empty().append(pollResults);
+  $('#admin-poll-results').empty().append(results);
+}
+
+function updateNameResults(responses) {
+  var results = $.map(responses, function(value, key){
+    return '<p>' + key + ' - ' + value + '</p>';
+  });
+
+  $('#admin-name-results').empty().append(results);
 }

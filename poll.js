@@ -15,8 +15,10 @@ function Poll(pollData) {
   this.admin_id = this.generateId(12);
   this.admin_url = 'admin/' + this.admin_id;
   this.questions = pollData.questions;
-  this.responses = {};
+  this.name_responses = {};
   this.respondants = {};
+  this.responses = {};
+  this.response_count = 0;
 }
 
 Poll.prototype.generateId = function(num) {
@@ -25,12 +27,20 @@ Poll.prototype.generateId = function(num) {
 
 Poll.prototype.recordResponse = function(message) {
   if(!this.respondants[message.responder]) {
+    this.response_count++;
     this.respondants[message.responder] = true;
-    this.addResponse(message.poll_response);
+    this.addNameResponse(message.pollee_name, message.poll_response);
+    this.addCountResponse(message.poll_response);
   }
 }
 
-Poll.prototype.addResponse = function(pollResponse) {
+Poll.prototype.addNameResponse = function(polleeName, pollResponse) {
+  if(polleeName !== '') {
+    this.name_responses[polleeName] = pollResponse;
+  }
+}
+
+Poll.prototype.addCountResponse = function(pollResponse) {
   if(this.responses[pollResponse]) {
     this.responses[pollResponse]++;
   } else {
