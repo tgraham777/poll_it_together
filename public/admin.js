@@ -37,10 +37,6 @@ $(document).ready(function(){
   }
 });
 
-Array.prototype.last = function(){
-  return this[this.length - 1];
-};
-
 socket.on('responses', function(responses) {
   updateResults(responses);
 });
