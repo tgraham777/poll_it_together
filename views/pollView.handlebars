@@ -1,7 +1,12 @@
 <h1 id="poll-view-name">{{poll.name }}</h1>
 
+<div class="poll-end">
+  Poll closes: <div id="time-end"> {{poll.time_end }} </div>
+</div>
+
 <div id="poll-view-page">
   <h3>Time remaining:</h3>
+  <div id="poll-view-time-clock"></div>
 
   <h3>Description:</h3>
   <p id="poll-view-description">{{poll.description }}</p>
