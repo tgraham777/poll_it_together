@@ -11,3 +11,7 @@ function appendQuestion() {
                     + questionNumber + '" placeholder="Enter a question"><br><br>';
   $('.question-list').append(newQuestion).off();
 }
+
+$(function() {
+  $('#datetimepicker').datetimepicker();
+});
