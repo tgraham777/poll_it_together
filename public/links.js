@@ -8,4 +8,4 @@ $(document).ready(function(){
   var adminFullUrl = window.location.origin + "/" + adminUrl.text();
   adminUrl.text(adminFullUrl);
   adminUrl.attr('href', adminFullUrl);
-})
+});

@@ -23,7 +23,7 @@ function Poll(pollData) {
 
 Poll.prototype.generateId = function(num) {
   return crypto.randomBytes(num).toString('hex');
-}
+};
 
 Poll.prototype.recordResponse = function(message) {
   if(!this.respondants[message.responder]) {
@@ -32,13 +32,13 @@ Poll.prototype.recordResponse = function(message) {
     this.addNameResponse(message.pollee_name, message.poll_response);
     this.addCountResponse(message.poll_response);
   }
-}
+};
 
 Poll.prototype.addNameResponse = function(polleeName, pollResponse) {
   if(polleeName !== '') {
     this.name_responses[polleeName] = pollResponse;
   }
-}
+};
 
 Poll.prototype.addCountResponse = function(pollResponse) {
   if(this.responses[pollResponse]) {
@@ -46,6 +46,6 @@ Poll.prototype.addCountResponse = function(pollResponse) {
   } else {
     this.responses[pollResponse] = 1;
   }
-}
+};
 
 module.exports = Poll;
