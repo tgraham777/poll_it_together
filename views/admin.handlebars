@@ -1,8 +1,16 @@
-<h1 id="admin-view-name">Admin Dashboard - "{{poll.name }}"</h1>
+</div><h1 id="admin-view-name">Admin Dashboard - "{{poll.name }}"</h1>
+
+<div class="poll-end">
+  Poll created on: <div id="created-on"> {{poll.created_on }} </div><br>
+  Poll closes: <div id="time-end"> {{poll.time_end }} </div>
+</div>
 
 <hr>
-<div id="admin-poll-closed"></div>
-<h3>Time remaining:</h3>
+<div id="admin-poll-closed">
+  <h3>Time remaining:</h3>
+  <div id="admin-time-clock"></div>
+</div>
+
 <h3>Real-time results:</h3>
 <div id="admin-poll-results"></div>
 

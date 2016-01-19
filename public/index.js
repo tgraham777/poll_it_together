@@ -11,3 +11,8 @@ function appendQuestion() {
                     + questionNumber + '" placeholder="Enter a question"><br><br>';
   $('.question-list').append(newQuestion).off();
 }
+
+$(function() {
+  var dateToday = new Date();
+  $('#datetimepicker').datetimepicker({minDate: dateToday});
+});
