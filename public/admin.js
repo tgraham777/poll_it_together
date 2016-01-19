@@ -27,6 +27,7 @@ $(document).ready(function(){
                          seconds + ' seconds');
     if(t <= 0){
       clearInterval(timeinterval);
+      $('#admin-poll-closed').empty().append('<h2>Poll is now closed.</h2>');
     }
   }, 1000);
 });

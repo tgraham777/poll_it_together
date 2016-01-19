@@ -21,6 +21,7 @@ $(document).ready(function(){
                          seconds + ' seconds');
     if(t <= 0){
       clearInterval(timeinterval);
+      $('#poll-view-page').empty().append('<h2>Poll is now closed.</h2>');
     }
   }, 1000);
 });
