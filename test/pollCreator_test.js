@@ -13,34 +13,48 @@ describe('PollCreator', function () {
     done();
   });
 
-  xit('can create a poll', function(done) {
-    var pollParams = { question: 'test poll',
-      choices: {
-        choice1: 'choice1'
+  it('can create and save a poll and find the poll by its id', function(done) {
+    var pollParams = { pollName: 'test',
+      pollDescription: 'test',
+      questions: {
+        question1: 'apple',
+        question2: 'banana'
       },
-      timeout: {
-        number: null,
-        units: null
-      }
+      pollEnd: '08/22/2016 8:16 AM',
+      showPollResults: 'Yes'
     }
-    var poll = dataStore.createPoll(pollParams);
-    expect(dataStore.findPollByAdminId(poll.adminId)).eql(poll);
+    var poll = pollCreator.create(pollParams);
+    expect(pollCreator.findPollById(poll.poll_id)).eql(poll);
     done();
   });
 
-  xit('can find saved polls by the pollId', function(done) {
-    var pollParams = { question: 'test poll',
-      choices: {
-        choice1: 'choice1'
+  it('can find a saved poll by the admin id', function(done) {
+    var pollParams = { pollName: 'test',
+      pollDescription: 'test',
+      questions: {
+        question1: 'apple',
+        question2: 'banana'
       },
-      timeout: {
-        number: null,
-        units: null
-      }
+      pollEnd: '08/22/2016 8:16 AM',
+      showPollResults: 'Yes'
     }
-    var poll = new Poll(pollParams);
-    dataStore.polls[poll.adminId] = poll;
-    expect(dataStore.findPollByPollId(poll.pollId)).eql(poll);
+    var poll = pollCreator.create(pollParams);
+    expect(pollCreator.findPollByAdminId(poll.admin_id)).eql(poll);
+    done();
+  });
+
+  it('can find a saved poll by the links id', function(done) {
+    var pollParams = { pollName: 'test',
+      pollDescription: 'test',
+      questions: {
+        question1: 'apple',
+        question2: 'banana'
+      },
+      pollEnd: '08/22/2016 8:16 AM',
+      showPollResults: 'Yes'
+    }
+    var poll = pollCreator.create(pollParams);
+    expect(pollCreator.findPollByLinksId(poll.links_id)).eql(poll);
     done();
   });
 })
