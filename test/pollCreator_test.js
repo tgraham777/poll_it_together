@@ -14,7 +14,7 @@ var pollParams = { pollName: 'test',
   },
   pollEnd: '08/22/2016 8:16 AM',
   showPollResults: 'Yes'
-}
+};
 
 describe('PollCreator', function () {
   it('has a "polls" attribute that starts as an empty hash', function(done) {
@@ -39,4 +39,4 @@ describe('PollCreator', function () {
     expect(pollCreator.findPollByLinksId(poll.links_id)).eql(poll);
     done();
   });
-})
+});
